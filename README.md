@@ -9,7 +9,15 @@
 
 ## 安装
 
-在 Codex 中调用内置技能安装器：
+在终端执行（需安装 Node.js，提供 `npx`）：
+
+```bash
+npx skills add crapthings/game-asset-skills
+```
+
+按提示选择 Codex、需要的技能及安装范围。命令直接从 GitHub 获取技能，无需等待 skills.sh 收录。
+
+也可以在 Codex 中调用内置技能安装器：
 
 ```text
 $skill-installer 从 crapthings/game-asset-skills 安装 skills/asset-analysis 和 skills/asset-generation
@@ -28,4 +36,12 @@ $asset-generation 根据资产需求生成角色或道具，并处理成透明 P
 
 ## 维护
 
-每个技能独立放在 `skills/<技能名称>/`。修改对应 `SKILL.md`、引用文件或脚本后提交到仓库。已安装的副本不会自动更新；更新时用新版替换对应技能目录。
+通过 `npx skills` 安装后，在相应安装范围内执行以下命令更新已安装的技能：
+
+```bash
+npx skills update
+```
+
+通过 Codex 内置安装器或手动复制安装的副本，需用新版替换对应技能目录。
+
+每个技能独立放在 `skills/<技能名称>/`。维护时修改对应 `SKILL.md`、引用文件或脚本，提交并推送到 GitHub；已安装的副本不会随仓库提交自动更新。
