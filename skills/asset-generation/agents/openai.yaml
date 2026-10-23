@@ -1,0 +1,4 @@
+interface:
+  display_name: "资产生成"
+  short_description: "生成风格统一的游戏角色、场景与道具图片，支持母版衍生、立绘及抠图"
+  default_prompt: "使用 $asset-generation 处理本次资产需求。"
