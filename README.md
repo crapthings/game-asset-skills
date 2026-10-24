@@ -4,6 +4,7 @@
 
 | 技能 | 用途 |
 | --- | --- |
+| [script-translation](skills/script-translation/SKILL.md) | 下载完整英文剧本，翻译审校为中文，按自然叙事断点分章并提取角色、场景、道具清单 |
 | [asset-analysis](skills/asset-analysis/SKILL.md) | 从剧本及已有素材整理资产需求、变体和演出安排 |
 | [asset-generation](skills/asset-generation/SKILL.md) | 生成角色、场景、道具，处理透明背景并交付文件 |
 
@@ -20,7 +21,7 @@ npx skills add crapthings/game-asset-skills
 也可以在 Codex 中调用内置技能安装器：
 
 ```text
-$skill-installer 从 crapthings/game-asset-skills 安装 skills/asset-analysis 和 skills/asset-generation
+$skill-installer 从 crapthings/game-asset-skills 安装 skills/script-translation、skills/asset-analysis 和 skills/asset-generation
 ```
 
 也可以将所需技能文件夹复制到 `~/.codex/skills/`（自定义 `CODEX_HOME` 时使用其下的 `skills/`），或项目的 `.agents/skills/`。安装后在下一轮对话中使用。
@@ -28,9 +29,12 @@ $skill-installer 从 crapthings/game-asset-skills 安装 skills/asset-analysis �
 ## 使用
 
 ```text
+$script-translation 从这个剧本链接下载全文，完成中文翻译、审校、分章和角色／场景／道具清单：<剧本链接>
 $asset-analysis 根据这段剧本整理资产需求，并检查已有素材可以如何复用。
 $asset-generation 根据资产需求生成角色或道具，并处理成透明 PNG。
 ```
+
+剧本翻译按「获取与初译 → 六轮审校 → 自然叙事断点分章与清单」执行，成果保存到目标项目的 `references/`。交叉审校使用独立的第二位语言审校者；未完成时明确报告状态。后续可用 `asset-analysis` 继续整理资产制作需求。
 
 资产生成依赖 Codex 的 Image Gen（`$imagegen`）能力；抠图使用 uv 管理依赖，脚本要求 Python 3.11–3.13。无需手动 pip 安装。项目风格从目标项目的 `AGENTS.md` 读取，资产输出到目标项目的 `references/assets/`。
 
